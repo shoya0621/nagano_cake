@@ -12,12 +12,28 @@
 
   <body>
    <header>
+    
     <h1><%= link_to "ながのCAKE", root_path %></h1>
-     <p><%= link_to "about", about_path %></p>
+    <% if customer_signed_in? %>
+     <p>マイページ</p>
      <p>商品一覧</p>
+     <p>カート</p>
+     <p><%=link_to "ログアウト",destroy_customer_session_path, method: :delete %></p>
+     
+    <% elsif admin_signed_in? %>
+     <p>商品一覧</p>
+     <p>会員一覧</p>
+     <p>注文履歴一覧</p>
+     <p>ジャンル一覧</p>
+     <p><%=link_to "ログアウト", destroy_admin_session_path, method: :delete %></p>
+     
+    <% else %>
+     <p><%= link_to "about", about_path %></p>
+     <p><%= link_to "商品一覧", cart_items_path %></p>
      <p><%= link_to "新規登録", new_customer_registration_path %></p>
      <p><%= link_to "ログイン", new_customer_session_path %></p>
-   
+     
+    <% end %>
    </header>
     <%= yield %>
    <footer>

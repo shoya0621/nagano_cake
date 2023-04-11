@@ -27,11 +27,11 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all'
     
     
-    get 'customers/my_page', to: 'customers/#show'
-    get 'customers/infomation/edit', to: 'customers/#edit'
-    patch 'customers/infomation', to: 'customers/#update'
+    get 'customers/my_page', to: 'customers#show'
+    get 'customers/infomation/edit', to: 'customers#edit'
+    patch 'customers/infomation', to: 'customers#update'
     get 'customers/confirm'
-    patch 'customers/withdraw', to: 'customers/#withdraw'
+    patch 'customers/withdraw', to: 'customers#withdraw'
     
     resources :items, only: [:index, :show]
     root to: 'homes#top'
