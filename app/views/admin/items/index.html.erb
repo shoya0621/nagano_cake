@@ -1,8 +1,14 @@
 <h1>商品一覧</h1>
-<%= @items.each do |item| %>
+<% @items.each do |item| %>
  <%= item.id %>
- <%= item.name %>
+ <%=link_to item.name, admin_item_path(item.id) %>
  <%= item.price %>
- <%= item.genre_id %>
- <%= item.status %
+ <%= item.genre.name %>
+ <% if item.is_active %>
+  <p>販売中</p>
+ <% else %>
+  <p>販売停止中</p>
+ <% end %>
 <% end %>
+
+<%= link_to "新規登録", new_admin_item_path %>
