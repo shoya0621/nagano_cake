@@ -16,7 +16,7 @@
     <h1><%= link_to "ながのCAKE", root_path %></h1>
     <% if customer_signed_in? %>
      <p><%=link_to "マイページ",customers_my_page_path %></p>
-     <p><%=link_to "商品一覧", cart_items_path %></p>
+     <p><%=link_to "商品一覧", items_path %></p>
      <p><%=link_to "カート", cart_items_path %></p>
      <p><%=link_to "ログアウト",destroy_customer_session_path, method: :delete %></p>
      
