@@ -1,12 +1,15 @@
 <h1>商品一覧（全x件）</h1>
 
 <% @items.each do |item| %>
- <% if item.image.attached? %>
-  <%= image_tag item.image, size: "200x200" %>
- <% else %>
-  <%= image_tag 'no_image', size: "200x200" %>
- <% end %>
+ <% if item.is_active %>
+  <% if item.image.attached? %>
+   <%= image_tag item.image, size: "200x200" %>
+  <% else %>
+   <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
  
- <%= item.name %>
- <%= item.price %>
+  <%= link_to item.name, item_path(item.id) %>
+  <%= item.price %>
+ <% end %>
 <% end %>
+ 

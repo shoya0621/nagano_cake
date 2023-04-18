@@ -1,1 +1,18 @@
 
+<% if @item.image.attached? %>
+ <%= image_tag @item.image, size: "200x200" %>
+<% else %>
+ <%= image_tag 'no_image', size: "200x200" %>
+<% end %>
+
+<p><%= @item.name %></p>
+<p><%= @item.introduction %></p>
+
+<p>￥<%= @item.price %>(税込み)</p>
+
+<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+ <%= f.hidden_field :item_id, value: @item.id %>
+ <p>個数選択</p>
+ <%= f.select :amount, *[1..10] %>
+ <%= f.submit "カートに入れる" %>
+<% end %>
