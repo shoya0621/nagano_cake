@@ -1,7 +1,7 @@
 <h1>注文情報入力</h1>
 
 <p>支払方法</p>
-<%= form_with model: @order,method: :post do |f| %>
+<%= form_with model: @order,url:  orders_confirm_path, method: :post do |f| %>
  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
  <%= f.radio_button :payment_method, Order.payment_methods.key(2) %>
@@ -27,4 +27,8 @@
   <%= f.label :name, "宛名" %>
   <%= f.text_field :name %>
   
+  
+ <%= f.submit "確認画面へ進む" %>
 <% end %>
+
+
