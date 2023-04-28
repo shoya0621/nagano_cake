@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   '〒' + postal_code + ' ' + address + ' ' + name
   end
   
+  
   ShippingFee = 800
   
   enum payment_method: { credit_card: 1, transfer: 2 }

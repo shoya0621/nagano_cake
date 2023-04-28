@@ -1,8 +1,41 @@
 <h1>注文履歴詳細</h1>
 <p>購入者</p>
-
+ <%= @order.customer.first_name + @order.customer.last_name %>
+ 
 <p>注文日</p>
+ <%= @order.created_at.strftime('%Y/%m/%d') %>
 <p>配送先</p>
+ <%= "〒" + @order.postal_code + @order.address + @order.name %>
+ 
 <p>支払方法</p>
+ <%= @order.payment_method_i18n %>
+ 
 <p>注文ステータス</p>
-<
+<%= form_with model: @order,url: admin_order_path(params[:id]), method: :patch do |f| %>
+ <%= f.select :status, Order.statuses.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k] } %>
+ <%= f.submit "更新する" %>
+<% end %>
+
+
+<p>商品一覧</p>
+<% @order_details.each do |order_detail| %>
+ <%= order_detail.item.name %>
+ <%= order_detail.item.with_tax_price %>
+ <%= order_detail.quantity %>
+ <%= order_detail.item.with_tax_price * order_detail.quantity %>
+ 
+ <% @total +=  order_detail.item.with_tax_price * order_detail.quantity %>
+  <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+   <%= f.select :production_status, OrderDetail.production_statuses.keys.map  { |k| [I18n.t("enums.order_detail.production_status.#{k}"), k] } %>
+   <%= f.submit "更新" %>
+  <% end %>
+<% end %>
+
+<p>商品合計</p>
+<%= @total %>
+
+<p>送料</p>
+<%= @order.shipping_fee %>
+
+<p>請求金額</p>
+<%= @order.payment %>
