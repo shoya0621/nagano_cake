@@ -1,2 +1,38 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+ <div class="container">
+  <div class="row py-5">
+   <div class="col-8 mx-auto">
+    <p>
+    ようこそ、ながのCAKEへ!</br>
+    このサイトは、ケーキ販売のECサイトになります。</br>
+    会員でない方も商品の閲覧はできますが、</br>
+    購入には会員登録が必要になります。
+    </p>
+   </div>
+  </div>
+
+  <div class="row">
+   <h4 class="font-weight-bold">新着商品</h4>
+  </div>
+  <div class="row py-2">
+   <% @items.each do |item| %>
+    <div class="col">
+     <div class="card">
+      <% if item.image.attached? %>
+       <%= image_tag item.image, size: "100x100" %>
+      <% else %>
+       <%= image_tag 'no_image', size: "100x100" %>
+      <% end %>
+      <p><%= item.name %></p>
+      <p>￥<%= item.with_tax_price %></p>
+      
+     </div>
+    </div>
+   <% end %>
+
+  </div>
+ 
+ <p class="text-right"><%= link_to "すべての商品を見る", items_path %></p>
+
+ 
+ </div>

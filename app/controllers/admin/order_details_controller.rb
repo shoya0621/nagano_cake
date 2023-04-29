@@ -10,11 +10,7 @@ class Admin::OrderDetailsController < ApplicationController
     end
     
     if order_details.empty?
-      
-        
-      
         order.update(status: "prepare")
-      
     end
     
     redirect_to admin_order_path(order_detail.order.id)
