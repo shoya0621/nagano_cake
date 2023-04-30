@@ -1,64 +1,73 @@
-<h2>Sign up</h2>
+
+<div class="container">
+<h2 class="my-2 class="mx-5"">新規会員登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="row">
   <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :last_name, "(姓)" %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "令和" %>
+</div>
+  <div class="row my-2">
+    <p class="col-2">名前</p>
+    <%= f.label :last_name, "(姓)" ,class:  "col-1 text-right" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "令和",class:  "col-4" %>
+    <%= f.label :first_name, "(名)",class:  "col-1 text-right" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "道子",class:  "col-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :first_name, "(名)" %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "道子" %>
+  <div class="row my-2">
+    <p class="col-2">フリガナ</p>
+    <%= f.label :last_name_kana, "(セイ)",class:  "col-1 text-right" %>
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "レイワ",class:  "col-4" %>
+    <%= f.label :first_name_kana, "(メイ)",class:  "col-1 text-right" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "ミチコ",class:  "col-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :last_name_kana, "(セイ)" %><br />
-    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "レイワ" %>
+  <div class="row my-2">
+    <%= f.label :email, "メールアドレス",class: "col-3" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "sample@example.com",class:  "col-4" %>
+  </div>
+
+  <div class="row my-2">
+    <%= f.label :postal_code, "郵便番号(ハイフンなし)",class: "col-3" %>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "0000000",class:  "col-4" %>
+  </div>
+
+  <div class="row my-2">
+    <%= f.label :address, "住所",class: "col-3" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0",class:  "col" %>
   </div>
   
-  <div class="field">
-    <%= f.label :first_name_kana, "(メイ)" %><br />
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "ミチコ" %>
+  <div class="row my-2">
+    <%= f.label :telephone_number, "電話番号(ハイフンなし)",class: "col-3" %>
+    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "00000000000",class:  "col-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "sample@example.com" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %><br />
-    <%= f.text_field :postal_code, autofocus: true, autocomplete: "0000000" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address, "住所" %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :telephone_number, "電話番号(ハイフンなし)" %><br />
-    <%= f.text_field :telephone_number, autofocus: true, autocomplete: "00000000000" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password,"パスワード(6文字以上)" %>
+  <div class="row my-2">
+    <%= f.label :password,"パスワード(6文字以上)",class: "col-3" %>
+<% 
+=begin
+%>    
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% end %>
+<%
+=end
+%>
+    <%= f.password_field :password, autocomplete: "new-password",class:  "col-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="row my-2">
+    <%= f.label :password_confirmation, "パスワード(確認用)",class: "col-3" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:  "col-4" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="row">
+   <div class="col-3"></div>
+    <%= f.submit "新規登録",class: "col-4 btn btn-success" %>
   </div>
 <% end %>
+  
+ <h3 class="my-3 ">既に登録済みの方</h3>
+  <%= render "public/shared/links" %>からログインください
 
-<%= render "public/shared/links" %>
+</div>
