@@ -19,9 +19,9 @@
     <div class="col-2">
 
       <% if item.image.attached? %>
-       <%= image_tag item.image, size: "100x100" %>
+       <%= image_tag item.image, class: "img-fluid" %>
       <% else %>
-       <%= image_tag 'no_image', size: "100x100" %>
+       <%= image_tag 'no_image', class: "img-fluid" %>
       <% end %>
       <p><%= item.name %></p>
       <p>￥<%= item.with_tax_price %></p>

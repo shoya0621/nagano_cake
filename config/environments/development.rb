@@ -76,4 +76,6 @@ Rails.application.configure do
   
   config.hosts << "dca49d69413749789971848b6af09735.vfs.cloud9.ap-northeast-1.amazonaws.com"
   config.web_console.allowed_ips = '0.0.0.0/0'
+  
+
 end
