@@ -1,15 +1,24 @@
-<h1>商品一覧（全x件）</h1>
 
-<% @items.each do |item| %>
- <% if item.is_active %>
-  <% if item.image.attached? %>
-   <%= image_tag item.image, size: "200x200" %>
-  <% else %>
-   <%= image_tag 'no_image', size: "200x200" %>
-  <% end %>
- 
-  <%= link_to item.name, item_path(item.id) %>
-  <%= item.price %>
- <% end %>
-<% end %>
- 
+<div class="container" >
+ <h2>商品一覧（全x件）</h2>
+ <div class="row py-2">
+  <div class="col-8 mx-auto">
+   <div class="row">
+    <% @items.each do |item| %>
+     <% if item.is_active %>
+      <div class="col-3">
+       <% if item.image.attached? %>
+        <%= image_tag item.image, size: "100x100" %>
+       <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+       <% end %></br>
+       <%= link_to item.name, item_path(item.id) %></br>
+       ￥<%= item.with_tax_price %>
+      </div>
+     <% end %>
+    <% end %>
+   </div>
+   <%= paginate @items %>
+  </div>
+ </div>
+</div>

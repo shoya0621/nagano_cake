@@ -1,22 +1,23 @@
-<h2>ログイン</h2>
+<div class="container">
+<h2 class="my-2">ログイン</h2>
 
-<p>会員の方はこちらからログイン</p>
-<%= form_with(model: @customer,url: customer_session_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<h3 class="my-3 ml-3">会員の方はこちらからログイン</h3>
+ <%= form_with(model: @customer,url: customer_session_path) do |f| %>
+   <div class="row my-3">
+    <%= f.label :email,"メールアドレス", class:  "col-3 ml-5 text-left" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:  "col-4" %>
+   </div>
+
+  <div class="row my-3">
+    <%= f.label :password,"パスワード", class: "col-3 ml-5 text-left" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "col-4" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+   <div class="col-3 ml-5"></div>
+    <%= f.submit "ログイン",class: "btn btn-primary col-2" %>
   </div>
-
-
-  <p>会員登録がお済でない方</p>
-  <div class="actions">
-    <%= f.submit "こちら" %>から新規登録を行ってください
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+ <% end %>
+  <h3 class="my-3 ml-3">会員登録がお済でない方</h3>
+   <p class= "ml-5" ><%= render "public/shared/links" %>から新規登録を行ってください。</p>
+</div>

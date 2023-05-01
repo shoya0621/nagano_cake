@@ -12,12 +12,12 @@
   </div>
 
   <div class="row">
-   <h4 class="font-weight-bold">新着商品</h4>
+   <h4 class="col-4 offset-2 font-weight-bold">新着商品</h4>
   </div>
-  <div class="row py-2">
+  <div class="row py-2 justify-content-center">
    <% @items.each do |item| %>
-    <div class="col">
-     <div class="card">
+    <div class="col-2">
+
       <% if item.image.attached? %>
        <%= image_tag item.image, size: "100x100" %>
       <% else %>
@@ -26,7 +26,7 @@
       <p><%= item.name %></p>
       <p>￥<%= item.with_tax_price %></p>
       
-     </div>
+
     </div>
    <% end %>
 
