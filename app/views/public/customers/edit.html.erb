@@ -1,25 +1,36 @@
-<h1>会員情報編集</h1>
+<div class="container">
+ <h2 class="my-4 mx-5">会員情報編集</h2>
 
-<%= form_with model: @customer, url:customers_infomation_path, method: :patch do |f| %>
- <p>"氏名"</p>
- <%= f.text_field :first_name %> <%= f.text_field :last_name %>
-
- <p>"フリガナ"</p>
- <%= f.text_field :first_name_kana %> <%= f.text_field :last_name_kana %>
-
- <p>"郵便番号"</p>
- <%= f.text_field :postal_code %>
-
- <p>"住所"</p>
- <%= f.text_field :address %>
-
- <p>"電話番号"</p>
- <%= f.text_field :telephone_number %>
-
- <p>"メールアドレス"</p>
- <%= f.text_field :email %>
-
- <%= f.submit '編集内容を保存' %>
-<% end %>
-
-<%= link_to "退会する", customers_confirm_path %>
+ <%= form_with model: @customer, url:customers_infomation_path, method: :patch do |f| %>
+  <div class="row my-2">
+   <p class="col-2">氏名</p>
+   <%= f.text_field :first_name,class: "col-3 pl-0" %>
+   <%= f.text_field :last_name,class: "col-3 pl-0 ml-3" %>
+  </div>
+  <div class="row my-2">
+   <p class="col-2">フリガナ</p>
+   <%= f.text_field :first_name_kana,class: "col-3 pl-0" %>
+   <%= f.text_field :last_name_kana,class: "col-3 pl-0 ml-3"  %>
+  </div>
+  <div class="row my-2">
+   <p class="col-2">郵便番号</p>
+   <%= f.text_field :postal_code,class: "col-3 pl-0" %>
+  </div>
+  <div class="row my-2">
+   <p class="col-2">住所</p>
+   <%= f.text_field :address,class: "col-8 pl-0" %>
+  </div>
+  <div class="row my-2">
+   <p class="col-2">電話番号</p>
+   <%= f.text_field :telephone_number,class: "col-3 pl-0" %>
+  </div>
+  <div class="row my-2">
+   <p class="col-2">メールアドレス</p>
+   <%= f.text_field :email,class: "col-3 pl-0" %>
+  </div>
+  <div class="row">
+   <%= f.submit '編集内容を保存',class: "btn btn-success col-2 offset-2" %>
+   <%= link_to "退会する", customers_confirm_path,class: "btn btn-danger col-2 offset-4" %>
+  </div>
+ <% end %>
+</div>

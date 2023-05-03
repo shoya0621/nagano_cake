@@ -1,21 +1,45 @@
-<h1>マイページ</h1>
-<h2>"登録情報"</h2>
-<%= link_to "編集する", customers_infomation_edit_path %>
-<p>氏名</p>
-<%= @customer.first_name + @customer.last_name %>
-<p>カナ</p>
-<%= @customer.first_name_kana + @customer.last_name_kana %>
-<p>郵便番号</p>
-<%= @customer.postal_code %>
-<p>住所</p>
-<%= @customer.address %>
-<p>電話番号</p>
-<%= @customer.telephone_number %>
-<p>メールアドレス</p>
-<%= @customer.email %>
-
-<h2>配送先</h2>
-<%= link_to "一覧を見る", addresses_path %>
-
-<h2>注文履歴</h2>
-<%= link_to "一覧を見る", orders_path %>
+<div class="container">
+ <h3 class="mx-5 py-3">マイページ</h3>
+ <div class="d-flex fles-row align-items-center py-2">
+  <h4 class="col-2 m-0">登録情報</h4>
+  <%= link_to "編集する", customers_infomation_edit_path,class: "btn btn-success" %>
+ </div>
+ <div class="col-8">
+ <table class="table table-bordered">
+  <tbody>
+   <tr>
+    <th scope="col" style="width: 30%">氏名</th>
+    <td><%= @customer.first_name + @customer.last_name %></td>
+   </tr>
+   <tr>
+    <th scope="col" style="width: 30%">カナ</th>
+    <td><%= @customer.first_name_kana + @customer.last_name_kana %></td>
+   </tr>
+   <tr>
+    <th scope="col" style="width: 30%">郵便番号</th>
+    <td><%= @customer.postal_code %></td>
+   </tr>
+   <tr>
+    <th scope="col" style="width: 30%">住所</th>
+    <td><%= @customer.address %></td>
+   </tr>
+   <tr>
+    <th scope="col" style="width: 30%">電話番号</th>
+    <td><%= @customer.telephone_number %></td>
+   </tr>
+   <tr>
+    <th scope="col" style="width: 30%">メールアドレス</th>
+    <td><%= @customer.email %></td>
+   </tr>
+  </tbody>
+ </table>
+ </div>
+ <div class="d-flex fles-row align-items-center py-2">
+  <h4 class="col-2 m-0">配送先</h4>
+  <%= link_to "一覧を見る", addresses_path,class: "btn btn-primary" %>
+ </div>
+ <div class="d-flex fles-row align-items-center py-2">
+  <h4 class="col-2 m-0">注文履歴</h4>
+  <%= link_to "一覧を見る", orders_path,class: "btn btn-primary" %>
+ </div>
+</div>

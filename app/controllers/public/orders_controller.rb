@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-
+    
     if params[:order][:address_select] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -16,6 +16,10 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    end
+    
+    if !(@order[:payment_method].presence && @order[:postal_code].presence && @order[:address].presence && @order[:name].presence)
+      redirect_to new_order_path
     end
     
     @cart_items = CartItem.where(customer_id: current_customer.id)
@@ -54,7 +58,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
   end
-  
+   
   private
   
   def order_params
