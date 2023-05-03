@@ -1,14 +1,36 @@
-<h1>商品一覧</h1>
-<% @items.each do |item| %>
- <%= item.id %>
- <%=link_to item.name, admin_item_path(item.id) %>
- <%= item.price %>
- <%= item.genre.name %>
- <% if item.is_active %>
-  <p>販売中</p>
- <% else %>
-  <p>販売停止中</p>
- <% end %>
-<% end %>
-
-<%= link_to "新規登録", new_admin_item_path %>
+<div class="container">
+ <div class="row d-flex align-items-center justify-content-between py-3">
+  <h2 class="my-2">商品一覧</h2>
+  <%= link_to "新規登録", new_admin_item_path, class: "btn btn-success" %>
+ </div>
+ <table class="table">
+　<thead>
+　 <tr>
+　  <th scope="col">商品ID</th>
+　  <th scope="col">商品名</th>
+　  <th scope="col">税抜価格</th>
+　  <th scope="col">ジャンル</th>
+　  <th scope="col">ステータス</th>
+　 </tr>
+　</thead>
+　<% @items.each do |item| %>
+　<tbody>
+　 <tr>
+　  <td class="align-middle"><%= item.id %></td>
+　  <td class="align-middle"><%=link_to item.name, admin_item_path(item.id) %></td>
+　  <td class="align-middle"><%= item.price %></td>
+　  <td class="align-middle"><%= item.genre.name %></td>
+　  <td class="align-middle">
+　   <% if item.is_active %>
+      <p>販売中</p>
+     <% else %>
+      <p>販売停止中</p>
+     <% end %>
+　  </td>
+　 </tr>
+　</tbody>
+  <% end %>
+ </table>
+ <%= paginate @items %>
+ 
+</div>

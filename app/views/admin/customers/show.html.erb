@@ -1,24 +1,44 @@
-<h1><%= @customer.first_name + @customer.last_name %>さんの会員詳細</h1>
-<p>会員ID</p>
-<%= @customer.id %>
-<p>氏名</p>
-<%= @customer.first_name + @customer.last_name %>
-<p>フリガナ</p>
-<%= @customer.first_name_kana + @customer.last_name_kana %>
-<p>郵便番号</p>
-<%= @customer.postal_code %>
-<p>住所</p>
-<%= @customer.address %>
-<p>電話番号</p>
-<%= @customer.telephone_number %>
-<p>メールアドレス</p>
-<%= @customer.email %>
-<p>会員ステータス</p>
- <% if @customer.is_deleted %>
-  <span>退会</span>
- <% else %>
-  <span>有効</span>
- <% end %>
+<div class="container">
+<h4 class="my-4"><%= @customer.first_name + @customer.last_name %>さんの会員詳細</h4>
+ <div class="row py-2">
+  <div class="col-3">会員ID</div>
+  <%= @customer.id %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">氏名</div>
+  <%= @customer.first_name + @customer.last_name %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">フリガナ</div>
+  <%= @customer.first_name_kana + @customer.last_name_kana %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">郵便番号</div>
+  <%= @customer.postal_code %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">住所</div>
+  <%= @customer.address %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">電話番号</div>
+  <%= @customer.telephone_number %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">メールアドレス</div>
+  <%= @customer.email %>
+ </div>
+ <div class="row py-2">
+  <div class="col-3">会員ステータス</div>
+   <% if @customer.is_deleted %>
+    <span>退会</span>
+   <% else %>
+    <span>有効</span>
+   <% end %>
+ </div>
 
-<%= link_to "編集", edit_admin_customer_path(@customer.id) %>
-<%= link_to "注文履歴一覧を見る", admin_root_path %>
+ <div class="row py-3">
+<%= link_to "編集", edit_admin_customer_path(@customer.id),class: "btn btn-success offset-3" %>
+<%= link_to "注文履歴一覧を見る", admin_root_path,class: "btn btn-primary offset-1" %>
+ </div>
+</div>

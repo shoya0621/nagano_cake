@@ -1,23 +1,45 @@
-<h1><%= @customer.first_name + @customer.last_name %>さんの会員情報編集</h1>
+<div class="container">
+ <h4 class="my-4"><%= @customer.first_name + @customer.last_name %>さんの会員情報編集</h4>
 
-<%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
- <p>会員ID</p>
- <%= @customer.id %>
- <p>氏名</p>
- <%= f.text_field :first_name %><%= f.text_field :last_name %>
- <p>フリガナ</p>
- <%= f.text_field :first_name_kana %><%= f.text_field :last_name_kana %>
- <p>郵便番号</p>
- <%= f.text_field :postal_code %>
- <p>住所</p>
- <%= f.text_field :address %>
- <p>電話番号</p>
- <%= f.text_field :telephone_number %>
- <p>メールアドレス</p>
- <%= f.text_field :email %>
- <p>会員ステータス</p>
- <%= f.radio_button :is_deleted, "false" %> 有効
- <%= f.radio_button :is_deleted, "true" %> 退会
-
- <%= f.submit "変更を保存" %>
-<% end %>
+ <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
+ <div class="row my-2">
+  <p class="col-2">会員ID</p>
+  <%= @customer.id %>
+ </div>
+ <div class="row my-2">
+  <p class="col-2">氏名</p>
+  <%= f.text_field :first_name,class: "col-3 pl-0" %>
+  <%= f.text_field :last_name,class: "col-3 pl-0 ml-3" %>
+ </div>
+ <div class="row my-2">
+  <p class="col-2">フリガナ</p>
+  <%= f.text_field :first_name_kana,class: "col-3 pl-0" %>
+  <%= f.text_field :last_name_kana,class: "col-3 pl-0 ml-3" %>
+ </div>
+ <div class="row my-2">
+  <p class="col-2">郵便番号</p>
+  <%= f.text_field :postal_code,class: "col-3 pl-0" %>
+ </div>
+ <div class="row my-2">
+  <p class="col-2">住所</p>
+  <%= f.text_field :address,class: "col-8 pl-0" %>
+ </div>
+ <div class="row my-2">
+  <p class="col-2">電話番号</p>
+  <%= f.text_field :telephone_number,class: "col-3 pl-0" %>
+ </div>
+ <div class="row my-2">
+  <p class="col-2">メールアドレス</p>
+  <%= f.text_field :email,class: "col-3 pl-0" %>
+ </div>
+ <div class="row my-2 d-flex align-items-center">
+  <p class="col-2 align-middle">会員ステータス</p>
+   <%= f.radio_button :is_deleted, "false" %> <span class="mx-2">有効</span>
+   <%= f.radio_button :is_deleted, "true" %> <span class="mx-2">退会</span>
+ </div>
+ <div class="row">
+  <%= f.submit "変更を保存",class: "btn btn-success offset-2" %>
+ </div>
+  <% end %>
+ 
+</div>

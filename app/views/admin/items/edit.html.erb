@@ -1,18 +1,33 @@
-<h1>商品編集</h1>
+<div class="container">
+ <h4 class="my-2">商品編集</h4>
+ <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+ <div class="row d-flex align-items-center offset-1 py-2">
+  <h5 class="m-0 col-3">商品画像</h5>
+  <%= f.file_field :image, accept: "image/*" %>
+ </div>
+ <div class="row d-flex align-items-center offset-1 py-2">
+  <h5 class="m-0 col-3">商品名</h5>
+  <%= f.text_field :name %>
+ </div>
+ <div class="row  offset-1 py-2">
+  <h5 class="m-0 col-3">商品説明</h5>
+  <%= f.text_area :introduction %>
+ </div>
+ <div class="row d-flex align-items-center offset-1 py-2">
+  <h5 class="m-0 col-3">ジャンル</h5>
+  <%= f.collection_select :genre_id, @genres, :id, :name %>
+ </div>
+ <div class="row d-flex align-items-center offset-1 py-2">
+  <h5 class="m-0 col-3">税抜価格</h5>
+  <%= f.text_field :price %>円
+ </div>
+ <div class="row d-flex align-items-center offset-1 py-2">
+  <h5 class="m-0 col-3">販売ステータス</h5>
+  <%= f.radio_button :is_active, "true" %><span class="px-1">販売中</span>
+  <%= f.radio_button :is_active, "false" %><span class="px-1">販売停止中</span>
+ </div>
+ <div class="row d-flex justify-content-center py-3">
+  <%= f.submit "変更を保存",class: "btn btn-lg btn-success" %>
+ <% end %>
 
-<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
- <%= f.file_field :image, accept: "image/*" %>
- <h2>商品名</h2>
- <%= f.text_field :name %>
- <h2>商品説明</h2>
- <%= f.text_area :introduction %>
- <h2>ジャンル</h2>
- <%= f.collection_select :genre_id, @genres, :id, :name%>
- <h2>税抜価格</h2>
- <%= f.text_field :price %>
- <h2>販売ステータス</h2>
- <%= f.radio_button :is_active, "true" %>販売中
- <%= f.radio_button :is_active, "false" %>販売停止中
-
- <%= f.submit "変更を保存" %>
-<% end %>
+</div>
