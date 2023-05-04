@@ -3,6 +3,7 @@ class Public::CartItemsController < ApplicationController
 
 
   def index
+   if customer_signed_in?
     @cart_items = CartItem.where(customer_id: current_customer.id)
      @cart_items.each do |cart_item|
       if !(cart_item.item.is_active)
@@ -11,6 +12,9 @@ class Public::CartItemsController < ApplicationController
      end
     @cart_item = CartItem.new
     @total = 0
+   else
+    redirect_to root_path
+   end
   end
 
   def update

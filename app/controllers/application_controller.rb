@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_customer!, except: [:top, :about, :index]
+  before_action :authenticate_admin!, if: :admin_url
   
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
@@ -10,6 +12,9 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def admin_url
+    request.fullpath.include?("/admin")
+  end
   protected
 
   def configure_permitted_parameters
