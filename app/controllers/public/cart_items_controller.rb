@@ -4,6 +4,11 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
+     @cart_items.each do |cart_item|
+      if !(cart_item.item.is_active)
+        cart_item.destroy
+      end
+     end
     @cart_item = CartItem.new
     @total = 0
   end
