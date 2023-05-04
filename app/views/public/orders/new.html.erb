@@ -1,5 +1,6 @@
 <div class="container">
  <h4 class="px-5">注文情報入力</h4>
+ <h5 class="text-danger"><%= flash[:notice] %></h5>
   <h5 class="py-1">支払方法</h5>
    <%= form_with model: @order,url: orders_confirm_path, method: :post do |f| %>
   <div class= "form-check ml-3">

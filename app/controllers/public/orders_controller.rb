@@ -21,6 +21,7 @@ class Public::OrdersController < ApplicationController
     end
     
     if !(@order[:payment_method].presence && @order[:postal_code].presence && @order[:address].presence && @order[:name].presence)
+      flash[:notice] = "お届け先を選択してください"
       redirect_to new_order_path
     end
     
@@ -34,6 +35,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     if !(CartItem.find_by(customer_id: current_customer.id))
+     flash[:notice] = "カート内に商品を追加してください"
      redirect_to cart_items_path
     else
      @order = Order.new(order_params)
