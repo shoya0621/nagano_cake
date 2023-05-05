@@ -35,7 +35,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     if !(CartItem.find_by(customer_id: current_customer.id))
-     flash[:notice] = "カート内に商品を追加してください"
+     flash[:massage] = "カート内に商品を追加してください"
      redirect_to cart_items_path
     else
      @order = Order.new(order_params)
