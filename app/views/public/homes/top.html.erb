@@ -20,9 +20,13 @@
     <div class="col-2">
 
       <% if item.image.attached? %>
-       <%= image_tag item.image, size: "100x100" %>
+       <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, size: "100x100" %>
+       <% end %>
       <% else %>
-       <%= image_tag 'no_image', size: "100x100" %>
+       <%= link_to item_path(item.id) do %>
+        <%= image_tag 'no_image', size: "100x100" %>
+       <% end %>
       <% end %>
       <p><%= item.name %></p>
       <p>￥<%= item.with_tax_price %></p>
