@@ -2,6 +2,7 @@
 <div class="container" >
  <h2>商品一覧（全<%= @item_counts.count %>件）</h2>
  <div class="row py-2">
+  <%= render 'public/homes/genre' %>
   <div class="col-8 mx-auto">
    <div class="row">
     <% @items.each do |item| %>

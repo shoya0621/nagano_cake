@@ -1,0 +1,16 @@
+   <div class="col-2 border" style="height:200px">
+    <table class="table table-borderless">
+     <thead>
+      <tr>
+       <th scope="col" class="text-center border-bottom">ジャンル</th>
+      </tr>
+     </thead>
+     <% @genres.each do |genre| %>
+     <tbody>
+      <tr>
+       <td class="p-1"><%= genre.name %></td>
+      </tr>
+     </tbody>
+     <% end %>
+    </table>
+   </div>
