@@ -9,11 +9,15 @@
      <% if item.is_active %>
       <div class="col-3">
        <% if item.image.attached? %>
-        <%= image_tag item.image, size: "100x100" %>
+        <%= link_to item_path(item.id) do %>
+         <%= image_tag item.image, size: "100x100" %>
+        <% end %>
        <% else %>
-        <%= image_tag 'no_image', size: "100x100" %>
+        <%= link_to item_path(item.id) do %>
+         <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
        <% end %></br>
-       <%= link_to item.name, item_path(item.id) %></br>
+       <%= item.name %></br>
        ￥<%= item.with_tax_price %>
       </div>
      <% end %>
