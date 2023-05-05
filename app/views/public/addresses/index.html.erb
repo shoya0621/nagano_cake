@@ -1,5 +1,6 @@
 <div class="container">
  <h2 class="my-2 mx-5">配送先登録/一覧</h2>
+ <p class="text-danger"><%= flash[:message] %></p>
  <%= form_with model: @address do |f| %>
  <div class="row my-2">
    <p class="col-3">郵便番号(ハイフンなし)</p>
